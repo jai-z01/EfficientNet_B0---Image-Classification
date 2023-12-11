@@ -1,62 +1,56 @@
-# EfficientNet_B0 Image Classification
+# Playing Card Image Classification with EfficientNet-B0
 
 ## Overview
 
-This project leverages a pretrained EfficientNet-B0 model for image classification on the Cards Dataset. The EfficientNet-B0 model is imported using the `timm` module, and the entire process is implemented using Google Colab with a T4 GPU.
+This repository contains code for training a playing card image classifier using a pretrained EfficientNet-B0 model. The model is trained on the Cards Dataset, and the implementation is done in Google Colab using a T4 GPU.
 
 ## Dataset
 
-The dataset used for training and evaluation is available on Kaggle: [Cards Image Dataset](https://www.kaggle.com/datasets/gpiosenka/cards-image-datasetclassification). The Kaggle API is utilized to download and import the dataset directly into the working directory.
+The Cards Dataset is used for training and evaluation. You can download the dataset from [Kaggle](https://www.kaggle.com/datasets/gpiosenka/cards-image-datasetclassification) and follow the instructions in the notebook to set up the dataset in your working directory.
 
-## Environment
+## Environment Setup
 
-The model is trained using Google Colab, taking advantage of the T4 GPU for accelerated computations.
-
-## Dependencies
-
-Ensure the following dependencies are installed to run the project:
-
-- `timm`
-- `torch`
-- `torchvision`
-- `kaggle`
-
-Install the required packages using the following:
+To run the code, ensure you have the required dependencies installed. You can install them using the following:
 
 ```bash
-pip install timm torch torchvision kaggle
+pip install torch torchvision timm tqdm matplotlib
 ```
 
 ## Usage
 
-### 1. Clone the Repository
+1. Clone the repository:
 
-```bash
-git clone https://github.com/your-username/your-repo.git
-cd your-repo
-```
+   ```bash
+   git clone https://github.com/your-username/your-repo.git
+   cd your-repo
+   ```
 
-### 2. Download and Extract the Dataset
+2. Set up the Kaggle API:
 
-Use the Kaggle API to download and extract the dataset:
+   - Place your Kaggle API key in the `kaggle.json` file and copy it to the `~/.kaggle/` directory.
 
-```bash
-kaggle datasets download -d gpiosenka/cards-image-datasetclassification
-unzip cards-image-datasetclassification.zip
-```
+3. Download and extract the dataset:
 
-### 3. Run the Jupyter Notebook
+   ```bash
+   kaggle datasets download -d gpiosenka/cards-image-datasetclassification
+   unzip cards-image-datasetclassification.zip
+   ```
 
-Open the Jupyter Notebook in Google Colab and execute the cells. Make sure to select the appropriate GPU runtime for accelerated training.
+4. Run the Jupyter Notebook:
 
-### 4. Configuration
+   Open the Jupyter Notebook in Google Colab and execute the cells. Make sure to select the appropriate GPU runtime for accelerated training.
 
-The configuration can be adjusted in the Jupyter Notebook. Key configurations include:
+## Model Architecture
 
-- Model: EfficientNet-B0
-- Loss Function: Cross Entropy
-- Optimizer: Adam with learning rate=0.001
-- Training Epochs: 5
+The image classifier uses a SimpleCardClassifier based on the EfficientNet-B0 model. The model is trained for 5 epochs with the Adam optimizer and Cross Entropy loss.
+
+## Training
+
+The training loop is implemented with a validation step, and the training progress is visualized with loss curves.
+
+## Evaluating Results
+
+The model's performance is evaluated on sample test images, and predictions are visualized alongside the original images.
 
 ## Contributing
 
@@ -70,10 +64,3 @@ If you'd like to contribute to this project, please follow the standard GitHub f
 ## License
 
 This project is licensed under the [MIT License](LICENSE).
-
-## Acknowledgments
-
-- The EfficientNet-B0 model is from the `timm` module.
-- The dataset is provided by [gpiosenka](https://www.kaggle.com/gpiosenka) on Kaggle.
-
-Feel free to customize this README to suit your specific project details. A clear and concise README enhances the usability and collaboration potential of your project.
